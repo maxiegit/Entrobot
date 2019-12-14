@@ -29,6 +29,8 @@ async def piss(ctx):
 async def mikucam(ctx):
     await ctx.send("https://www.youtube.com/watch?v=KNrdGx69pCo")
 
+bot.add_cog(cmd(bot))
+
 @bot.event
 async def on_message(message):
     if message.author == bot.user:

@@ -17,22 +17,6 @@ async def on_ready():
         f'{bot.user} has connected to discord\n'
         '-------------------------------------------------------'    )
 
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
-
-    if message.content == "hatsune miku":
-        await message.channel.send("hatsune miku")
-
-    if message.content == "me":
-        await message.channel.send("pussy")
-
-@bot.command(name="gay")
-async def gay(ctx):
-    num = random.choice(range(1, 102))
-    await ctx.send("%s is %s%% gay!"%(ctx.author.mention, num))
-
 @bot.command(name="test")
 async def test(ctx):
     await ctx.send("test")

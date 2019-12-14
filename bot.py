@@ -50,6 +50,9 @@ async def on_message(message):
 
     if message.content == "straight pride":
         await message.channel.send("straight pride?? HAHAHAHAHA")
+
+    if message.content == "and thats on what?":
+        await message.channel.send("periodt, luv")
         
     await bot.process_commands(message)
 bot.run(token)

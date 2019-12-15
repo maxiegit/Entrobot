@@ -11,25 +11,13 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 bot = commands.Bot(command_prefix="!")
 
+extentions = ['cmd', 'moderation']
+
 @bot.event
 async def on_ready():
     print(
         f'{bot.user} has connected to discord\n'
         '-------------------------------------------------------'    )
-
-@bot.command(name="test")
-async def test(ctx):
-    await ctx.send("test")
-
-@bot.command(name="piss")
-async def piss(ctx):
-    await ctx.send("https://media.discordapp.net/attachments/602966702191280139/617107230269112331/PISS.gif")
-    
-@bot.command(name="mikufancam")
-async def mikucam(ctx):
-    await ctx.send("https://www.youtube.com/watch?v=KNrdGx69pCo")
-
-bot.add_cog(cmd(bot))
 
 @bot.event
 async def on_message(message):
@@ -50,11 +38,11 @@ async def on_message(message):
         
     await bot.process_commands(message)
 
-@bot.command(name="cmd")
-async def cmd(ctx):
-    embed=discord.Embed(title="Commands", color=0xbf75ec)
-    embed.add_field(name="!piss", value="Posts piss.gif", inline=True)
-    embed.add_field(name="!gay", value="tells you how gay you are", inline=True)
-    await ctx.send(embed=embed)
 
-bot.run(token)
+if __name__ == "__main__":
+        for extention in extentions:
+            try:
+                bot.load_extension(extention)
+            except Exception as error:
+                print("oopsy whoopsy i made a fucky wucky!! {} failed to woad owo [{}]".format(extention, error))
+        bot.run(token)

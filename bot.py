@@ -17,7 +17,7 @@ extentions = ['cmd', 'moderation']
 @bot.event
 async def on_ready():
     print(
-        f'{bot.user} has connected\n'
+        f'{bot.user} has connected to discord\n'
         '-------------------------------------------------------'    )
 
 @bot.event
@@ -38,6 +38,7 @@ async def on_message(message):
         await message.channel.send("periodt, luv")
         
     await bot.process_commands(message)
+
 
 if __name__ == "__main__":
         for extention in extentions:

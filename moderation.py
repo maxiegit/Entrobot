@@ -19,7 +19,6 @@ class Moderation(commands.Cog):
         embed.set_footer(text="Use !noncmd for non command responses!")
         await ctx.send(embed=embed)
 
-<<<<<<< HEAD
     @commands.command()
     async def noncmd(self, ctx):
         embed=discord.Embed(title=" ", description="Commands that do no require a ! prefix", color=0x91f9a3)
@@ -32,7 +31,5 @@ class Moderation(commands.Cog):
         embed.set_footer(text="Use !cmd for all commands!")
         await ctx.send(embed=embed)
 
-=======
->>>>>>> parent of 22909ae... add !noncmd
 def setup(bot):
     bot.add_cog(Moderation(bot))

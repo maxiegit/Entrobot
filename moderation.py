@@ -29,7 +29,7 @@ class Moderation(commands.Cog):
         embed.add_field(name="hatsune miku", value="hatsune miku", inline=False)
         embed.add_field(name="straight pride", value="straight pride?? HAHAHAHAHA", inline=True)
         embed.set_footer(text="Use !cmd for all commands!")
-        await self.bot.say(embed=embed)
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Moderation(bot))

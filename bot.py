@@ -13,6 +13,7 @@ GUILD = os.getenv('DISCORD_GUILD')
 bot = commands.Bot(command_prefix="!")
 
 extentions = ['cmd', 'moderation']
+limst = ['periodt', 'pyramidt', 'placenta', 'peepeeit', 'communism', 'pussy']
 
 @bot.event
 async def on_ready():
@@ -35,7 +36,7 @@ async def on_message(message):
         await message.channel.send("straight pride?? HAHAHAHAHA")
 
     if message.content == "and thats on what?":
-        await message.channel.send("periodt, luv")
+        await message.channel.send(random.choice(limst))
         
     await bot.process_commands(message)
 

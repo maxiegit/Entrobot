@@ -37,6 +37,9 @@ async def on_message(message):
 
     if message.content == "and thats on what?":
         await message.channel.send(random.choice(limst))
+
+    if message.content == "um":
+        await message.channel.send(":uhm:")
         
     await bot.process_commands(message)
 

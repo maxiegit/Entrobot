@@ -15,6 +15,7 @@ bot = commands.Bot(command_prefix="!")
 extentions = ['cmd', 'moderation']
 limst = ['periodt', 'pyramidt', 'placenta', 'peepeeit', 'communism', 'pussy']
 
+
 @bot.event
 async def on_ready():
     print(
@@ -23,6 +24,8 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    uhm = discord.utils.get(message.server.emojis, name="uhm")
+
     if message.author == bot.user:
         return
 
@@ -37,6 +40,9 @@ async def on_message(message):
 
     if message.content == "and thats on what?":
         await message.channel.send(random.choice(limst))
+
+    if message.content == "um":
+        await message.channel.send(uhm)
         
     await bot.process_commands(message)
 

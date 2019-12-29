@@ -24,8 +24,6 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    uhm = discord.utils.get(message.server.emojis, name="uhm")
-
     if message.author == bot.user:
         return
 

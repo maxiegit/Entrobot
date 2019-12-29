@@ -25,6 +25,19 @@ class Cmd(commands.Cog):
     async def mikucam(self, ctx):
         await ctx.send("https://www.youtube.com/watch?v=KNrdGx69pCo")
 
+    @commands.command(name="bonk")
+    async def bonk(self, ctx):
+        await ctx.send("https://cdn.discordapp.com/attachments/611577151623528449/660896781919322125/bonk.mp4")
+        
+    # @commands.command(name="setcolor")
+    # async def setcolor(self, ctx, arg):
+    #     author = ctx.message.author
+    #     await self.bot.create_role(author.server, name="arg", colour=discord.Colour(arg))
+
+    #     user = ctx.message.author
+    #     role = discord.utils.get(user.server.roles, name=arg)
+    #     await self.bot.add_roles(user, role)
+
 
 def setup(bot):
     bot.add_cog(Cmd(bot))

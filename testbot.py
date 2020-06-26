@@ -12,7 +12,11 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 bot = commands.Bot(command_prefix="!")
 
-extentions = ['cogs.cmd.cmd', 'cogs.moderation.moderation']
+extentions = [  'cogs.cmd.cmd', 
+                'cogs.moderation.moderation',
+                'cogs.FFXIV.FFXIV'
+                ]
+                
 limst = ['periodt', 'pyramidt', 'placenta', 'peepeeit', 'communism', 'pussy']
 
 

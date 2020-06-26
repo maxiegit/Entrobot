@@ -38,6 +38,6 @@ class Cmd(commands.Cog):
     #     role = discord.utils.get(user.server.roles, name=arg)
     #     await self.bot.add_roles(user, role)
 
-
 def setup(bot):
     bot.add_cog(Cmd(bot))
+    

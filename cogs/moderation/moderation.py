@@ -12,7 +12,7 @@ class Moderation(commands.Cog):
     async def cmd(self, ctx):
         embed=discord.Embed(title=" ", color=0xa985f9)
         embed.set_author(name="Comamnds")
-        embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/654614324509409300.png?v=1")
+        embed.set_thumbnail(url="https://media.discordapp.net/attachments/611577151623528449/726070715899707502/images-removebg-preview.png")
         embed.add_field(name="!piss", value="Posts piss.gif", inline=False)
         embed.add_field(name="!gay", value="Tells you how gay you are", inline=False)
         embed.add_field(name="!mikufancam", value="Miku Fan Cam", inline=False)
@@ -23,7 +23,7 @@ class Moderation(commands.Cog):
     async def noncmd(self, ctx):
         embed=discord.Embed(title=" ", description="Commands that do no require a ! prefix", color=0x91f9a3)
         embed.set_author(name="Non-commands")
-        embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/654614324509409300.png?v=1")
+        embed.set_thumbnail(url="https://media.discordapp.net/attachments/611577151623528449/726070715899707502/images-removebg-preview.png")
         embed.add_field(name="me", value="pussy", inline=False)
         embed.add_field(name="and thats on what?", value="periodt, luv", inline=False)
         embed.add_field(name="hatsune miku", value="hatsune miku", inline=False)

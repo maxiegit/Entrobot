@@ -23,7 +23,7 @@ class FFXIV(commands.Cog):
         item = await client.index_by_id(
             index="Item",
             content_id=ID,
-            columns=["Name"]
+            columns=["Name", "Description"]
         )   
         
         embed=discord.Embed(title=item["Name"], description=item["Description"], color=0xff36f8)

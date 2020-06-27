@@ -29,6 +29,20 @@ class Cmd(commands.Cog):
     async def bonk(self, ctx):
         await ctx.send("https://cdn.discordapp.com/attachments/611577151623528449/660896781919322125/bonk.mp4")
         
+    @commands.command()
+    async def avatar(self, ctx, *,  avamember : discord.Member=None):
+        if avamember:
+            userAvatarUrl = avamember.avatar_url
+            embed=discord.Embed()
+            embed.set_image(url=userAvatarUrl)
+            embed.set_footer(text="You look so pretty~~")
+            await ctx.send(embed=embed)
+        else:
+            embed=discord.Embed(title="Unable to get avatar", description="Command example")
+            embed.add_field(name=" ", value=" !avatar @USER", inline=True)
+            embed.set_thumbnail(url=embed.author.icon_url)
+            await ctx.send(embed=embed)    
+
     # @commands.command(name="setcolor")
     # async def setcolor(self, ctx, arg):
     #     author = ctx.message.author
@@ -40,4 +54,3 @@ class Cmd(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Cmd(bot))
-    

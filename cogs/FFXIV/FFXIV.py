@@ -9,23 +9,26 @@ import json
 from discord.ext import commands
 
 class FFXIV(commands.Cog):
+
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None
-
-    @commands.command()
-    async def item(self, ctx, ID):
+        global client 
         client = pyxivapi.XIVAPIClient( 
             session=aiohttp.ClientSession(), 
             api_key="c043b7f2b76c40a8b709aa41f9bdf013fa4aea2b66474698b9a7adec941ec142"
         )
 
+    @commands.command()
+    async def item(self, ctx, ID):
         item = await client.index_by_id(
             index="Item",
             content_id=ID,
-            columns=["Name"]
+            columns=["ID", "Name", "Description", "Icon"]
         )   
-        await ctx.send(item["Name"]+"\n"+ID) 
+        
+        embed=discord.Embed(title=item["Name"], description=item["Description"], color=0xff36f8)
+        await ctx.send(embed=embed)
 
 
 def setup(bot):

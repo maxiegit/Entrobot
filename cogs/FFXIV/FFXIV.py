@@ -27,6 +27,5 @@ class FFXIV(commands.Cog):
         )   
         await ctx.send(item["Name"]+"\n"+ID) 
 
-
 def setup(bot):
     bot.add_cog(FFXIV(bot))

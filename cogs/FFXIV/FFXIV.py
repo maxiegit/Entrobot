@@ -25,7 +25,9 @@ class FFXIV(commands.Cog):
             content_id=ID,
             columns=["Name"]
         )   
-        await ctx.send(item["Name"]+"\n"+ID) 
+        
+        embed=discord.Embed(title=item["Name"], description=item["Description"], color=0xff36f8)
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(FFXIV(bot))

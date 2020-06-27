@@ -36,11 +36,6 @@ class Cmd(commands.Cog):
             embed=discord.Embed()
             embed.set_image(url=userAvatarUrl)
             embed.set_footer(text="You look so pretty~~")
-            await ctx.send(embed=embed)
-        else:
-            embed=discord.Embed(title="Unable to get avatar", description="Command example")
-            embed.add_field(name=" ", value=" !avatar @USER", inline=True)
-            embed.set_thumbnail(url=embed.author.icon_url)
             await ctx.send(embed=embed)    
 
     # @commands.command(name="setcolor")

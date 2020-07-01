@@ -10,7 +10,7 @@ load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
-bot = commands.Bot(command_prefix="!")
+bot = commands.Bot(command_prefix="$")
 
 extentions = [  'cogs.cmd.cmd', 
                 'cogs.moderation.moderation',

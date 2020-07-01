@@ -44,11 +44,12 @@ class FFXIV(commands.Cog):
             include_classjobs=True
          )
 
-        print(char)
-        embed=discord.Embed(title=char["Character"]["Name"], description=char["Character"]["ActiveClassJob"]["UnlockedState"]["Name"])
-        embed.set_thumbnail(url=char["Character"]["Avatar"])
-        embed.add_field(name="Server", value=char["Character"]["Server"], inline=True)
-        # embed.add_field(name=char["Character"]["ClassJobs"][3]["Job"]["Abbreviation"]+ " lvl", value=char["Character"]["ClassJobs"][3]["Job"]["ClassJobCategory"]["ID"], inline=True)
+        char = json.dumps(char, indent=4)
+        loaded_char = json.loads(char)
+
+        embed=discord.Embed(title=loaded_char["Character"]["Name"], description=loaded_char["Character"]["ActiveClassJob"]["UnlockedState"]["Name"])
+        embed.set_thumbnail(url=loaded_char["Character"]["Avatar"])
+        embed.add_field(name="Server", value=loaded_char["Character"]["Server"], inline=True)
 
         await ctx.send(embed=embed)
 

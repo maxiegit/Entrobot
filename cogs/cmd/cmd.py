@@ -30,7 +30,7 @@ class Cmd(commands.Cog):
         await ctx.send("https://cdn.discordapp.com/attachments/611577151623528449/660896781919322125/bonk.mp4")
         
     @commands.command()
-    async def avatar(self, ctx, *,  avamember : discord.Member=None):
+    async def avatar(self, ctx, *,  avamember : discord.Member):
         if avamember:
             userAvatarUrl = avamember.avatar_url
             embed=discord.Embed()

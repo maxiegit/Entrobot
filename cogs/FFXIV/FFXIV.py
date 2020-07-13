@@ -29,7 +29,7 @@ class FFXIV(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def char(self, ctx, world="", forename="", surname=""):
+    async def char(self, ctx, world, forename, surname):
         #search by name does not return as much data as ID
         #so when searching by name, we get the ID and preform a second search
         char_name = await client.character_search(

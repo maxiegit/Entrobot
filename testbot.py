@@ -14,7 +14,8 @@ bot = commands.Bot(command_prefix="!")
 
 extentions = [  'cogs.cmd.cmd', 
                 'cogs.moderation.moderation',
-                'cogs.FFXIV.FFXIV'
+                'cogs.FFXIV.FFXIV',
+                'cogs.error.error'
                 ]
                 
 limst = ['periodt', 'pyramidt', 'placenta', 'peepeeit', 'communism', 'pussy']

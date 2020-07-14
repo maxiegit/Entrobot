@@ -28,6 +28,10 @@ class Cmd(commands.Cog):
     @commands.command(name="bonk")
     async def bonk(self, ctx):
         await ctx.send("https://cdn.discordapp.com/attachments/611577151623528449/660896781919322125/bonk.mp4")
+
+    @commands.command(name="ramalama")
+    async def ramalama(self, ctx):
+        await ctx.send("We go together\nLike rama lama lama ka dinga da dinga dong\nRemembered forever\nAs shoo-bop sha wadda wadda yippity boom de boom\nChang chang changitty chang sha-bop\nThat\'s the way it should be\nWah-oooh, yeah!\nWe\'re one of a kind\nLike dip da-dip da-dip doo-wop da doo-bee doo\nOur names are signed\nBoogedy boogedy boogedy boogedy\nShooby doo-wop she-bop\nChang chang changitty chang sha-bop\nWe'll always be like one, wa-wa-wa-one\nWhen we go out at night\nAnd stars are shinin' bright\nUp in the skies above\nOr at the high school dance\nWhere you can find romance\nMaybe it might be love\nRama lama lama ka dinga da dinga dong\nShoo-bop sha wadda wadda yippity boom de boom\nChang chang changitty chang sha-bop\nDip da-dip da-dip doo-wop da doo-bee doo\nBoogedy boogedy boogedy boogedy\nShoo-be doo-wop she-bop\nSha-na-na-na-na-na-na-na yippity dip de doom\nRama lama lama ka dinga da dinga dong\nShoo-bop sha wadda wadda yippity boom de boom\nChang chang changitty chang sha-bop\nDip da-dip da-dip doo-wop da doo-bee doo\nBoogedy boogedy boogedy boogedy\nShoo-be doo-wop she-bop\nSha-na-na-na-na-na-na-na yippity dip de doom\nWop ba-ba lu-mop and wop bam boom!\nWe're for each other\nLike a wop ba-ba lu-bop and wop bam boom\nJust like my brother is\nSha-na-na-na-na-na-na-na yippity dip de doom\nChang chang chanitty chang sha-bop\nWe'll always be together\nWha oooh, yeah!\nWe'll always be together\nWe'll always be together\nWe'll always be together\nWe'll always be together\nWe'll always be together\nWe'll always be together\nWe'll always be together\nWe'll always be together\nWe'll always be together\nWe'll always be together\nWe'll always be together\nWe'll always be together\nWe'll always be together")
         
     @commands.command()
     async def avatar(self, ctx, *,  avamember : discord.Member):

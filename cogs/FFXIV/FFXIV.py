@@ -29,6 +29,7 @@ class FFXIV(commands.Cog):
         embed=discord.Embed(title=item["Name"], description=item["Description"], color=0xff36f8)
         await ctx.send(embed=embed)
 
+    #getting char id could probably be seperated into its own function
     @commands.command()
     async def char(self, ctx, world, forename, surname):
         #search by name does not return as much data as ID
@@ -71,6 +72,9 @@ class FFXIV(commands.Cog):
 
             char = json.dumps(char, indent=4)
             loaded_char = json.loads(char)
+            
+            #uses the role variable to determine where to start and end in the loop
+            #so as to only return the relevent classes within the role
 
             if role=="":
                 start=0
@@ -102,6 +106,7 @@ class FFXIV(commands.Cog):
             embed=discord.Embed(title=loaded_char["Character"]["Name"], colour=colour)
             embed.set_thumbnail(url=loaded_char["Character"]["Avatar"])
             
+            # loops through to make embed fields for classes wanted
             while start < end:
                 embed.add_field(name=loaded_char['Character']['ClassJobs'][start]['UnlockedState']['Name'], value=loaded_char['Character']['ClassJobs'][start]['Level'], inline=True)
                 start += 1

@@ -113,5 +113,23 @@ class FFXIV(commands.Cog):
             
             await ctx.send(embed=embed)
 
+    @commands.command()
+    async def FCsearch(self, ctx, world, name):
+        async with ctx.typing():
+            fc_name= await client.freecompany_search(
+                world=world,
+                name=name
+            )
+
+            fc=await client.freecompany_by_id(
+                lodestone_id=9235334723364979231,
+                include_freecompany_members=True
+            )
+        
+            fc = json.dumps(fc, indent=4)
+            loaded_fc = json.loads(fc)
+
+            print(loaded_fc)
+
 def setup(bot):
     bot.add_cog(FFXIV(bot))

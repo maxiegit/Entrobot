@@ -112,6 +112,30 @@ class FFXIV(commands.Cog):
                 start += 1
             
             await ctx.send(embed=embed)
+        
+
+    @commands.command()
+    async def portrait(self, ctx, world, forename, surname):
+        async with ctx.typing():
+            char_name = await client.character_search(
+                world=world,
+                forename=forename,
+                surname=surname
+            )
+
+            charID=char_name["Results"][0]["ID"]
+            char = await client.character_by_id(
+                lodestone_id=charID
+            )
+            
+            char = json.dumps(char, indent=4)
+            loaded_char = json.loads(char)
+
+            embed=discord.Embed(title=loaded_char["Character"]["Name"])
+            embed.set_image(url=loaded_char['Character']['Portrait'])
+
+            await ctx.send(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(FFXIV(bot))

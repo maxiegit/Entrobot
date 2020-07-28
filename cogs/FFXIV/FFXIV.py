@@ -20,13 +20,18 @@ class FFXIV(commands.Cog):
         )
 
     @commands.command()
-    async def item(self, ctx, ID):
-        item = await client.index_by_id(
-            index="Item",
-            content_id=ID,
-            columns=["Name", "Description"]
+    async def whatis(self, ctx, name):
+        item = await client.index_search(
+            indexes=["Item"],
+            name=name,
+            columns=["Name", "Description", "ID", "Icon"]
         )   
-        embed=discord.Embed(title=item["Name"], description=item["Description"], color=0xff36f8)
+            
+        print(item)
+
+        embed=discord.Embed(title=item['Results'][0]['Name'], description=item['Results'][0]['Description'],
+         url="https://www.garlandtools.org/db/#item/" + str(item['Results'][0]['ID']), color=0xff36f8)
+        embed.set_footer(text="Click the name for more info ^_^")
         await ctx.send(embed=embed)
 
     #getting char id could probably be seperated into its own function

@@ -1,11 +1,19 @@
 # Changelog
 
-## [0.2.0](https://github.com/MaxMagill/Entrobot/tree/0.2.0) (2020-07-13)
+## [0.2.2](https://github.com/MaxMagill/Entrobot/tree/0.2.2) (2020-07-28)
 
-[Full Changelog](https://github.com/MaxMagill/Entrobot/compare/0.2.0...0.2.0)
+[Full Changelog](https://github.com/MaxMagill/Entrobot/compare/0.2.0...0.2.2)
+
+**Implemented enhancements:**
+
+- Extend item command [\#23](https://github.com/MaxMagill/Entrobot/pull/23) ([MaxMagill](https://github.com/MaxMagill))
+- Extend char command [\#22](https://github.com/MaxMagill/Entrobot/pull/22) ([MaxMagill](https://github.com/MaxMagill))
+- Portrait command [\#21](https://github.com/MaxMagill/Entrobot/pull/21) ([MaxMagill](https://github.com/MaxMagill))
+- add class search command [\#19](https://github.com/MaxMagill/Entrobot/pull/19) ([MaxMagill](https://github.com/MaxMagill))
 
 **Merged pull requests:**
 
+- add changelog [\#16](https://github.com/MaxMagill/Entrobot/pull/16) ([MaxMagill](https://github.com/MaxMagill))
 - add error handling [\#15](https://github.com/MaxMagill/Entrobot/pull/15) ([MaxMagill](https://github.com/MaxMagill))
 
 

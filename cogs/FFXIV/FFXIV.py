@@ -20,40 +20,59 @@ class FFXIV(commands.Cog):
         )
 
     @commands.command()
-    async def item(self, ctx, ID):
-        item = await client.index_by_id(
-            index="Item",
-            content_id=ID,
-            columns=["Name", "Description"]
+    async def whatis(self, ctx, name):
+        item = await client.index_search(
+            indexes=["Item"],
+            name=name,
+            columns=["Name", "Description", "ID", "Icon"]
         )   
-        embed=discord.Embed(title=item["Name"], description=item["Description"], color=0xff36f8)
+            
+        print(item)
+
+        embed=discord.Embed(title=item['Results'][0]['Name'], description=item['Results'][0]['Description'],
+         url="https://www.garlandtools.org/db/#item/" + str(item['Results'][0]['ID']), color=0xff36f8)
+        embed.set_footer(text="Click the name for more info ^_^")
         await ctx.send(embed=embed)
 
     #getting char id could probably be seperated into its own function
     @commands.command()
     async def char(self, ctx, world, forename, surname):
-        #search by name does not return as much data as ID
-        #so when searching by name, we get the ID and preform a second search
-        char_name = await client.character_search(
-            world=world,
-            forename=forename,
-            surname=surname
-        )
+        async with ctx.typing():
 
-        charID=char_name["Results"][0]["ID"]
-        char = await client.character_by_id(
-            lodestone_id=charID,
-            include_classjobs=True
-         )
+            #search by name does not return as much data as ID
+            #so when searching by name, we get the ID and preform a second search
+            char_name = await client.character_search(
+                world=world,
+                forename=forename,
+                surname=surname
+            )
 
-        char = json.dumps(char, indent=4)
-        loaded_char = json.loads(char)
+            charID=char_name["Results"][0]["ID"]
+            char = await client.character_by_id(
+                lodestone_id=charID,
+                include_freecompany=True,
+                extended=True
+            )
 
-        embed=discord.Embed(title=loaded_char["Character"]["Name"], description=loaded_char["Character"]["ActiveClassJob"]["UnlockedState"]["Name"])
-        embed.set_thumbnail(url=loaded_char["Character"]["Avatar"])
-        embed.add_field(name="Server", value=loaded_char["Character"]["Server"], inline=True)
+            char = json.dumps(char, indent=4)
+            loaded_char = json.loads(char)
 
-        await ctx.send(embed=embed)
+            try:
+                embed=discord.Embed(title=loaded_char['Character']['Name'], description=loaded_char['Character']['Title']['Name'], colour=0xb077e6)
+            except TypeError:
+                embed=discord.Embed(title=loaded_char['Character']['Name'], description="", colour=0xb077e6)
+            embed.set_thumbnail(url=loaded_char['Character']['Avatar'])
+            embed.add_field(name="Server", value=loaded_char['Character']['Server'], inline=False)
+            embed.add_field(name="Race", value=loaded_char['Character']['Race']['Name'] + ", " + loaded_char['Character']['Tribe']['Name'], inline=False)
+            embed.add_field(name="Guardian", value=loaded_char['Character']['GuardianDeity']['Name'], inline=False)
+            embed.add_field(name="Nameday", value=loaded_char['Character']['Nameday'], inline=False)
+            embed.add_field(name="Grand Company", value=loaded_char['Character']['GrandCompany']['Rank']['Name'], inline=False)
+            try:
+                embed.add_field(name="Free Company", value=loaded_char['FreeCompany']['Name'] + " <" + loaded_char['FreeCompany']['Tag']+">", inline=False)
+            except TypeError:
+                pass
+
+            await ctx.send(embed=embed)
 
     @commands.command()
     async def classes(self, ctx, world, forename, surname, role=""):
@@ -113,7 +132,6 @@ class FFXIV(commands.Cog):
             
             await ctx.send(embed=embed)
         
-
     @commands.command()
     async def portrait(self, ctx, world, forename, surname):
         async with ctx.typing():

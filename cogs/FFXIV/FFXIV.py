@@ -7,7 +7,13 @@ import asyncio
 import aiohttp
 import json
 import colorsys
+import urllib.request
 from discord.ext import commands
+from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw 
+from io import BytesIO
+
 
 class FFXIV(commands.Cog):
     def __init__(self, bot):
@@ -154,6 +160,49 @@ class FFXIV(commands.Cog):
 
             await ctx.send(embed=embed)
 
+    @commands.command()
+    async def image(self, ctx):
+        async with ctx.typing():
+            
+
+            char_name = await client.character_search(
+            world="Cactuar",
+            forename="Lunar",
+            surname="Orbit"
+            )
+
+            charID=char_name["Results"][0]["ID"]
+            char = await client.character_by_id(
+                lodestone_id=charID,
+                include_classjobs=True
+            )
+
+            char = json.dumps(char, indent=4)
+            loaded_char = json.loads(char)
+
+            url = loaded_char['Character']['Portrait']
+            with urllib.request.urlopen(url) as url:
+                f = BytesIO(url.read())
+
+            # w 640 h 873
+            portrait = Image.open(f)
+
+            bg = Image.new('RGB', (portrait.size[0] * 2, portrait.size[1]), color = (73, 109, 137))
+            print(loaded_char)
+            with BytesIO() as image_binary:
+                create_image(bg, portrait, str(loaded_char['Character']['ClassJobs'][7]['UnlockedState']['Name']), str(loaded_char['Character']['ClassJobs'][7]['Level'])).save(image_binary, 'PNG')
+                image_binary.seek(0)
+                await ctx.send(file=discord.File(fp=image_binary, filename='image.png'))
+
+def create_image(bg, portrait, name, level):
+    draw = ImageDraw.Draw(bg)
+
+    draw.text((740, 75),name,(255,255,255))
+    draw.text((740, 85),level,(255,255,255))
+
+    bg.paste(portrait)
+
+    return bg
 
 def setup(bot):
     bot.add_cog(FFXIV(bot))

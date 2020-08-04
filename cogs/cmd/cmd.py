@@ -2,7 +2,11 @@ import cogs
 import discord
 import random
 from discord.ext import commands
-
+from discord import Embed
+from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw 
+from io import BytesIO
 
 class Cmd(commands.Cog):
     def __init__(self, bot):
@@ -42,14 +46,12 @@ class Cmd(commands.Cog):
             embed.set_footer(text="You look so pretty~~")
             await ctx.send(embed=embed)    
 
-    # @commands.command(name="setcolor")
-    # async def setcolor(self, ctx, arg):
-    #     author = ctx.message.author
-    #     await self.bot.create_role(author.server, name="arg", colour=discord.Colour(arg))
-
-    #     user = ctx.message.author
-    #     role = discord.utils.get(user.server.roles, name=arg)
-    #     await self.bot.add_roles(user, role)
+    @commands.command()
+    async def version(self, ctx):
+        f = open("files/version.txt", "r")
+        embed=discord.Embed(title="Running version " + f.read(), color=0x70de52)
+        embed.set_author(name="Version", url=discord.Embed.Empty, icon_url=ctx.bot.user.avatar_url)
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Cmd(bot))

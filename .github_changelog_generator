@@ -1,4 +1,7 @@
 since-tag=0.2.0
-future-release=0.2.0
+future-release=0.2.2
 user=MaxMagill
 project=Entrobot
+enhancement-labels=enhancement
+bug-labels=bug
+exclude-labels=maintenance

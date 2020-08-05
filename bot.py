@@ -12,7 +12,7 @@ token = os.getenv('DISCORD_TOKEN')
 bot = commands.Bot(command_prefix="$")
 bot.remove_command('help')
 
-extentions = [  'cogs.cmd.cmd', 
+extentions = [  'cogs.general.general', 
                 'cogs.moderation.moderation',
                 'cogs.FFXIV.FFXIV',
                 'cogs.error.error'
